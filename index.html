@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07110d" />
+    <meta
+      name="description"
+      content="一款支持键盘与触屏操作的霓虹风格贪吃蛇网页游戏。"
+    />
+    <title>贪吃蛇 · Neon Snake</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <main class="page-shell">
+      <header class="hero">
+        <p class="eyebrow"><span></span> ARCADE / 01</p>
+        <h1>贪吃蛇<span>Neon Snake</span></h1>
+        <p class="subtitle">吞噬光点，刷新纪录。别撞上墙壁，也别咬到自己。</p>
+      </header>
+
+      <section class="game-layout" aria-label="贪吃蛇游戏">
+        <div class="game-card">
+          <div class="hud" aria-live="polite">
+            <div class="hud-item">
+              <span class="hud-label">得分</span>
+              <strong id="score">0</strong>
+            </div>
+            <div class="hud-item">
+              <span class="hud-label">最高分</span>
+              <strong id="high-score">0</strong>
+            </div>
+            <div class="hud-item">
+              <span class="hud-label">速度</span>
+              <strong><span id="level">1</span><small> 级</small></strong>
+            </div>
+            <div class="status-pill" id="status-pill">
+              <i></i><span id="status-text">待开始</span>
+            </div>
+          </div>
+
+          <div class="canvas-wrap" id="canvas-wrap">
+            <canvas id="game" width="600" height="600" aria-label="贪吃蛇游戏区域"></canvas>
+            <div class="scanlines" aria-hidden="true"></div>
+            <div class="overlay" id="overlay">
+              <div class="overlay-icon" aria-hidden="true">◆</div>
+              <p class="overlay-kicker" id="overlay-kicker">准备好了吗？</p>
+              <h2 id="overlay-title">开始游戏</h2>
+              <p id="overlay-message">使用方向键或 WASD 控制移动</p>
+              <button class="primary-button" id="overlay-action" type="button">
+                <span>开始</span>
+                <b aria-hidden="true">→</b>
+              </button>
+            </div>
+          </div>
+
+          <div class="game-actions">
+            <button class="secondary-button" id="pause-button" type="button" disabled>
+              <span class="button-icon">Ⅱ</span><span id="pause-label">暂停</span>
+            </button>
+            <button class="secondary-button" id="restart-button" type="button">
+              <span class="button-icon">↻</span><span>重新开始</span>
+            </button>
+            <button class="secondary-button" id="sound-button" type="button" aria-pressed="true">
+              <span class="button-icon" id="sound-icon">♪</span><span id="sound-label">音效开</span>
+            </button>
+          </div>
+        </div>
+
+        <aside class="side-panel">
+          <div class="panel-block controls-block">
+            <p class="panel-kicker">CONTROLS</p>
+            <h2>操作方式</h2>
+            <div class="key-row desktop-controls">
+              <div class="key-cluster">
+                <kbd>W</kbd>
+                <div><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></div>
+              </div>
+              <div class="key-cluster">
+                <kbd>↑</kbd>
+                <div><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd></div>
+              </div>
+            </div>
+            <div class="shortcut-list">
+              <span><kbd>Space</kbd> 暂停 / 继续</span>
+              <span><kbd>R</kbd> 重新开始</span>
+            </div>
+            <div class="dpad" aria-label="触屏方向键">
+              <button type="button" data-direction="up" aria-label="向上">↑</button>
+              <button type="button" data-direction="left" aria-label="向左">←</button>
+              <button type="button" data-direction="down" aria-label="向下">↓</button>
+              <button type="button" data-direction="right" aria-label="向右">→</button>
+            </div>
+            <p class="swipe-tip">手机端也可以直接在棋盘上滑动</p>
+          </div>
+
+          <div class="panel-block tips-block">
+            <p class="panel-kicker">FIELD NOTES</p>
+            <h2>生存指南</h2>
+            <ol>
+              <li><b>01</b><span>每吃到一个能量点，得分增加。</span></li>
+              <li><b>02</b><span>每获得 50 分，速度提升一级。</span></li>
+              <li><b>03</b><span>最高分会自动保存在本机。</span></li>
+            </ol>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer>Built with vanilla HTML, CSS &amp; JavaScript</footer>
+    <script src="game.js"></script>
+  </body>
+</html>
